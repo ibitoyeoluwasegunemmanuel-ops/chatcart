@@ -20,9 +20,9 @@ services:
       mkdir -p dist
       cp -R frontend/* dist/
       cat > dist/config.js <<EOF
-      window.CHATCART_API_BASE = "${CHATCART_API_BASE}";
+      window.CHATCART_API_BASE = "${VITE_API_URL}";
       EOF
     publishPath: dist
     envVars:
-      - key: CHATCART_API_BASE
+      - key: VITE_API_URL
         value: https://chatcart-api.onrender.com/api
