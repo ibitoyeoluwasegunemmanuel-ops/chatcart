@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChatCart Creator Studio</title>
+  <link rel="stylesheet" href="creator.css?v=20260304a" />
+</head>
+<body>
+  <div class="creator-shell">
+    <aside class="creator-sidebar">
+      <div class="logo-wrap">
+        <div class="logo">ChatCart</div>
+        <div class="logo-sub">Creator Studio</div>
+      </div>
+      <nav class="creator-nav">
+        <a href="#overview" class="nav-item active">Overview</a>
+        <a href="#ai-studio" class="nav-item">AI Studio</a>
+        <a href="#script-lab" class="nav-item">Script Lab</a>
+        <a href="#scheduler" class="nav-item">Scheduler</a>
+        <a href="#library" class="nav-item">Content Library</a>
+      </nav>
+      <button id="logoutBtn" class="btn danger">Logout</button>
+    </aside>
+
+    <main class="creator-main">
+      <header class="creator-topbar">
+        <div>
+          <h1>Advanced Content Creator Workspace</h1>
+          <p>Plan, generate, optimize, and publish premium marketing content fast.</p>
+          <div id="creatorPlanUsage" class="status"></div>
+          <div class="btn-row">
+            <select id="creatorUpgradePlanSelect">
+              <option value="creator_starter">Creator Starter</option>
+              <option value="creator_pro">Creator Pro</option>
+              <option value="creator_studio">Creator Studio</option>
+            </select>
+            <button id="creatorUpgradePlanBtn" class="btn secondary">Upgrade Plan</button>
+          </div>
+          <div id="creatorUpgradeStatus" class="status"></div>
+        </div>
+        <div id="creatorSession" class="session-pill">Checking session...</div>
+      </header>
+
+      <section id="overview" class="creator-grid stats-grid">
+        <article class="card stat">
+          <p>Total Drafts</p>
+          <h2 id="statDrafts">0</h2>
+        </article>
+        <article class="card stat">
+          <p>Scheduled Posts</p>
+          <h2 id="statScheduled">0</h2>
+        </article>
+        <article class="card stat">
+          <p>Published</p>
+          <h2 id="statPublished">0</h2>
+        </article>
+        <article class="card stat">
+          <p>Avg Content Score</p>
+          <h2 id="statScore">0%</h2>
+        </article>
+      </section>
+
+      <section class="creator-grid main-grid">
+        <article id="ai-studio" class="card span-7">
+          <h3>AI Content Studio</h3>
+          <p class="muted">Generate captions, ad copy, hashtags, and high-converting social posts.</p>
+          <div class="form-grid">
+            <div>
+              <label>Content Type</label>
+              <select id="contentType">
+                <option value="caption">Product Caption</option>
+                <option value="post">Social Post</option>
+                <option value="ad">Ad Copy</option>
+                <option value="hashtags">Hashtags</option>
+              </select>
+            </div>
+            <div>
+              <label>Platform</label>
+              <select id="platformType">
+                <option value="Instagram">Instagram</option>
+                <option value="Facebook">Facebook</option>
+                <option value="TikTok">TikTok</option>
+                <option value="YouTube">YouTube</option>
+              </select>
+            </div>
+            <div>
+              <label>Tone</label>
+              <select id="toneType">
+                <option value="Bold">Bold</option>
+                <option value="Friendly">Friendly</option>
+                <option value="Luxury">Luxury</option>
+                <option value="Educational">Educational</option>
+              </select>
+            </div>
+            <div>
+              <label>Goal</label>
+              <select id="goalType">
+                <option value="Conversions">Conversions</option>
+                <option value="Engagement">Engagement</option>
+                <option value="Brand Awareness">Brand Awareness</option>
+                <option value="Lead Generation">Lead Generation</option>
+              </select>
+            </div>
+          </div>
+
+          <label>Content Context</label>
+          <textarea id="contentContext" placeholder="Describe the product, offer, target audience, and campaign intent..."></textarea>
+
+          <div class="btn-row">
+            <button id="generateBtn" class="btn primary">Generate Premium Content</button>
+            <button id="variantBtn" class="btn secondary">Generate 3 Variants</button>
+            <button id="saveDraftBtn" class="btn secondary">Save Draft</button>
+          </div>
+
+          <label>AI Output</label>
+          <textarea id="aiOutput" class="output" placeholder="Your AI content appears here..."></textarea>
+          <div id="aiStatus" class="status"></div>
+        </article>
+
+        <article id="script-lab" class="card span-5">
+          <h3>Script Lab</h3>
+          <p class="muted">Create high-performing short-form and long-form script structures.</p>
+
+          <label>Video Type</label>
+          <select id="scriptType">
+            <option value="UGC Hook">UGC Hook</option>
+            <option value="Product Demo">Product Demo</option>
+            <option value="Educational">Educational</option>
+            <option value="Storytelling">Storytelling</option>
+          </select>
+
+          <label>Primary Topic</label>
+          <input id="scriptTopic" placeholder="e.g. How this product solves dry skin in 7 days" />
+
+          <button id="buildScriptBtn" class="btn primary wide">Build Script Framework</button>
+
+          <div class="script-box">
+            <h4>Hook</h4>
+            <p id="hookText">—</p>
+            <h4>Body</h4>
+            <p id="bodyText">—</p>
+            <h4>CTA</h4>
+            <p id="ctaText">—</p>
+          </div>
+        </article>
+
+        <article id="scheduler" class="card span-8">
+          <h3>Post Scheduler</h3>
+          <p class="muted">Publish now or schedule campaigns with platform targeting.</p>
+
+          <div class="form-grid two">
+            <div>
+              <label>Mode</label>
+              <select id="postMode">
+                <option value="now">Post Now</option>
+                <option value="schedule">Schedule Post</option>
+              </select>
+            </div>
+            <div>
+              <label>Platform</label>
+              <select id="postPlatform">
+                <option value="Instagram">Instagram</option>
+                <option value="Facebook">Facebook</option>
+                <option value="TikTok">TikTok</option>
+                <option value="YouTube">YouTube</option>
+              </select>
+            </div>
+            <div>
+              <label>Date</label>
+              <input id="postDate" type="date" />
+            </div>
+            <div>
+              <label>Time</label>
+              <input id="postTime" type="time" />
+            </div>
+          </div>
+
+          <label>Post Content</label>
+          <textarea id="postContent" placeholder="Use AI output or write custom content here..."></textarea>
+
+          <div class="btn-row">
+            <button id="publishBtn" class="btn primary">Execute Publish</button>
+            <button id="loadPostsBtn" class="btn secondary">Refresh Posts</button>
+          </div>
+
+          <div id="scheduleStatus" class="status"></div>
+        </article>
+
+        <article class="card span-12">
+          <h3>Team Management (CEO / Staff)</h3>
+          <p class="muted">Scale content operations by creating staff profiles with dedicated access.</p>
+          <div class="form-grid two">
+            <div>
+              <label>Staff Name</label>
+              <input id="creatorStaffName" placeholder="Staff full name" />
+            </div>
+            <div>
+              <label>Staff Email</label>
+              <input id="creatorStaffEmail" type="email" placeholder="staff@creator.com" />
+            </div>
+          </div>
+          <div class="form-grid two">
+            <div>
+              <label>Staff Password</label>
+              <input id="creatorStaffPassword" type="password" placeholder="Temporary password" />
+            </div>
+            <div>
+              <label>Staff Title</label>
+              <input id="creatorStaffTitle" placeholder="e.g. Content Strategist" />
+            </div>
+          </div>
+          <label>Permissions</label>
+          <div id="creatorStaffPermissionOptions" class="inline-action"></div>
+          <div class="btn-row">
+            <button id="creatorCreateStaffBtn" class="btn secondary">Create Staff Profile</button>
+            <button id="creatorRefreshStaffBtn" class="btn secondary">Refresh Team</button>
+          </div>
+          <div id="creatorStaffStatus" class="status"></div>
+          <div id="creatorStaffList" class="list"></div>
+        </article>
+
+        <article id="library" class="card span-4">
+          <h3>Quality Engine</h3>
+          <p class="muted">Content scoring for readability, hooks, CTA strength, and hashtag quality.</p>
+          <div class="score-wrap">
+            <div class="score-circle"><span id="qualityScore">0%</span></div>
+            <ul id="qualityChecklist" class="checklist">
+              <li>Hook present</li>
+              <li>CTA present</li>
+              <li>Optimal length</li>
+              <li>Hashtags included</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card span-12">
+          <h3>Scheduled & Published Content</h3>
+          <div id="postsList" class="list"></div>
+        </article>
+
+        <article class="card span-12">
+          <h3>Billing History</h3>
+          <div id="creatorBillingList" class="list"></div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="creator.js?v=20260305d"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChatCart Login</title>
+  <link rel="stylesheet" href="auth.css?v=20260304b" />
+</head>
+<body>
+  <main class="auth-card">
+    <h1>Login</h1>
+    <p class="subtitle">Select your account type to enter the correct workspace.</p>
+
+    <form id="loginForm">
+      <div class="grid one">
+        <div>
+          <label>Email</label>
+          <input id="email" type="email" required placeholder="you@example.com" />
+        </div>
+        <div>
+          <label>Password</label>
+          <input id="password" type="password" required placeholder="Your password" />
+        </div>
+        <div>
+          <label>Account Type</label>
+          <select id="role" required>
+            <option value="vendor">Vendor</option>
+            <option value="content_creator">Content Creator</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="submitBtn" type="submit" class="primary">Login</button>
+        <a class="link-btn" href="signup.html">Create new account</a>
+        <a class="link-btn" href="index.html">Back to Role Selection</a>
+      </div>
+      <div id="formStatus" class="status"></div>
+    </form>
+  </main>
+
+  <script src="auth.js?v=20260305d"></script>
+</body>
+</html>

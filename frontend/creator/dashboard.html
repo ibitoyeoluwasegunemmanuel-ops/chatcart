@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creator Dashboard</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <h2>ChatCart</h2>
+      <ul>
+        <li>Dashboard</li>
+        <li>Create Content</li>
+        <li>AI Video Generator</li>
+        <li>Schedule Posts</li>
+        <li>Social Accounts</li>
+        <li>Analytics</li>
+      </ul>
+    </aside>
+
+    <main class="content">
+      <header class="topbar">
+        <h1>Creator Dashboard</h1>
+        <div class="topbar-actions">
+          <button class="notify-toggle" aria-label="Notifications">
+            Notifications
+            <span class="notify-count">0</span>
+          </button>
+          <button class="btn-primary">Generate Content</button>
+        </div>
+      </header>
+
+      <div class="generator">
+        <h2>AI Content Generator</h2>
+        <input type="text" placeholder="Enter topic" />
+        <button class="btn-primary">Generate Script</button>
+      </div>
+
+      <section class="chart-panel">
+        <h2>Content Performance</h2>
+        <canvas class="chart-canvas" data-points="15,30,28,42,38,50,64,70"></canvas>
+      </section>
+    </main>
+  </div>
+  <div class="notification-panel">
+    <h3>Real-time Notifications</h3>
+    <ul class="notification-list"></ul>
+  </div>
+  <script src="../js/app.js"></script>
+</body>
+</html>

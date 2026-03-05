@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChatCart - Sign Up</title>
+  <link rel="stylesheet" href="styles.css?v=20260304a" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-wrap">
+        <div class="brand">ChatCart</div>
+        <div class="brand-subtitle">Commerce + AI Automation</div>
+      </div>
+      <nav class="nav-list">
+        <a class="nav-link" data-icon="◈" href="dashboard.html">Dashboard</a>
+        <a class="nav-link" data-icon="◉" href="dashboard.html#products">Products</a>
+        <a class="nav-link" data-icon="◎" href="dashboard.html#orders">Orders</a>
+        <a class="nav-link" data-icon="✦" href="dashboard.html#automation">Automation</a>
+        <a class="nav-link" data-icon="◍" href="dashboard.html#social">Social Media</a>
+        <a class="nav-link" data-icon="◬" href="dashboard.html#analytics">Analytics</a>
+        <a class="nav-link" data-icon="⚙" href="dashboard.html#settings">Settings</a>
+        <button class="nav-link btn-danger" data-icon="⎋" data-action="logout" type="button">Logout</button>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1 class="topbar-title">Create Your Account</h1>
+          <p class="topbar-subtitle">Sign up as vendor or customer and launch your ChatCart experience.</p>
+        </div>
+        <div class="user-chip" id="navUser">Not signed in</div>
+      </header>
+
+      <section class="content">
+        <section class="hero">
+          <h2>Start with a modern commerce workflow.</h2>
+          <p>Use one account to access product management, order tracking, and AI-powered automation modules.</p>
+        </section>
+
+        <div class="grid">
+          <section class="card span-6">
+            <h3>Sign Up</h3>
+            <p class="card-subtitle">Fill in your details to create a new account.</p>
+            <form id="signupForm">
+              <label for="signupName">Name</label>
+              <input id="signupName" required />
+
+              <label for="signupEmail">Email</label>
+              <input id="signupEmail" type="email" required />
+
+              <label for="signupPassword">Password</label>
+              <input id="signupPassword" type="password" required />
+
+              <label for="signupRole">Role</label>
+              <select id="signupRole" required>
+                <option value="vendor">Vendor</option>
+                <option value="customer">Customer</option>
+              </select>
+
+              <div class="button-row">
+                <button type="submit" class="btn-primary">Create Account</button>
+                <a href="login.html" class="btn-secondary">Already have an account?</a>
+              </div>
+            </form>
+            <div id="authStatus" class="status"></div>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js?v=20260304a"></script>
+</body>
+</html>

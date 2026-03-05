@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChatCart - Dashboard</title>
+  <link rel="stylesheet" href="styles.css?v=20260304a" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand-wrap">
+        <div class="brand">ChatCart</div>
+        <div class="brand-subtitle">Commerce + AI Automation</div>
+      </div>
+      <nav class="nav-list">
+        <a class="nav-link active" data-icon="◈" href="dashboard.html">Dashboard</a>
+        <a class="nav-link" data-icon="◉" href="#products">Products</a>
+        <a class="nav-link" data-icon="◎" href="#orders">Orders</a>
+        <a class="nav-link" data-icon="✦" href="#automation">Automation</a>
+        <a class="nav-link" data-icon="◍" href="#social">Social Media</a>
+        <a class="nav-link" data-icon="◬" href="#analytics">Analytics</a>
+        <a class="nav-link" data-icon="⚙" href="#settings">Settings</a>
+        <button class="nav-link btn-danger" data-icon="⎋" data-action="logout" type="button">Logout</button>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1 class="topbar-title">Product Dashboard</h1>
+          <p class="topbar-subtitle">Manage products, monitor orders, and run automation from one workspace.</p>
+        </div>
+        <button id="sidebarToggle" class="btn-secondary" type="button">Toggle Menu</button>
+        <div class="user-chip">Logged in as <strong id="sessionName">User</strong> • <span id="sessionRole">role</span></div>
+      </header>
+
+      <section class="content">
+        <section class="hero">
+          <h2>Realtime operations for modern vendors.</h2>
+          <p>Track store performance, upload products, review recent orders, and trigger automation and social publishing workflows.</p>
+        </section>
+
+        <div class="grid">
+          <section class="card span-3">
+            <div class="stats-label">Products</div>
+            <div class="stats-value" id="statProducts">0</div>
+          </section>
+          <section class="card span-3">
+            <div class="stats-label">Orders</div>
+            <div class="stats-value" id="statOrders">0</div>
+          </section>
+          <section class="card span-3">
+            <div class="stats-label">Revenue</div>
+            <div class="stats-value" id="statRevenue">$0.00</div>
+          </section>
+          <section class="card span-3">
+            <div class="stats-label">Pending Orders</div>
+            <div class="stats-value" id="statPendingOrders">0</div>
+          </section>
+
+          <section class="card span-5" id="products">
+            <h3>Product Manager</h3>
+            <p class="card-subtitle">Create and maintain your product listings.</p>
+            <form id="uploadForm">
+              <input id="editingProductId" type="hidden" />
+
+              <label for="productName">Product Name</label>
+              <input id="productName" required />
+
+              <label for="productDescription">Description</label>
+              <textarea id="productDescription" required></textarea>
+
+              <label for="productPrice">Price</label>
+              <input id="productPrice" type="number" step="0.01" min="0.01" required />
+
+              <label for="productCurrency">Currency</label>
+              <select id="productCurrency" required>
+                <option value="NGN">NGN (₦)</option>
+                <option value="USD">USD ($)</option>
+                <option value="GBP">GBP (£)</option>
+                <option value="EUR">EUR (€)</option>
+              </select>
+
+              <label for="productStock">Stock Quantity</label>
+              <input id="productStock" type="number" min="0" value="0" required />
+
+              <label for="productImages">Product Images (Camera/Gallery)</label>
+              <input id="productImages" type="file" accept="image/*" capture="environment" multiple />
+
+              <div class="button-row">
+                <button type="submit" class="btn-primary" id="saveProductBtn">Create Product</button>
+                <button type="button" class="btn-secondary" id="cancelEditBtn">Cancel Edit</button>
+                <button type="button" id="refreshVendorBtn" class="btn-secondary">Refresh Data</button>
+              </div>
+            </form>
+            <div id="vendorStatus" class="status"></div>
+          </section>
+
+          <section class="card span-7">
+            <h3>Your Product Catalog</h3>
+            <p class="card-subtitle">Quick view of your latest listings.</p>
+            <div id="vendorProductsList" class="list product-grid"></div>
+          </section>
+
+          <section class="card span-7" id="orders">
+            <h3>Recent Orders</h3>
+            <p class="card-subtitle">Latest customer purchases for your products.</p>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Product</th>
+                    <th>Qty</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="ordersTableBody"></tbody>
+              </table>
+            </div>
+            <div id="vendorOrdersList" class="hidden"></div>
+          </section>
+
+          <section class="card span-5" id="automation">
+            <h3>AI Automation Tools</h3>
+            <p class="card-subtitle">Launch automation flows for product and order operations.</p>
+            <label for="aiContentType">AI Content Type</label>
+            <select id="aiContentType">
+              <option value="caption">Product Caption</option>
+              <option value="post">Social Media Post</option>
+              <option value="ad">Ad Copy</option>
+              <option value="hashtags">Hashtags</option>
+            </select>
+
+            <label for="aiPrompt">Context</label>
+            <textarea id="aiPrompt" placeholder="Product details or campaign context..."></textarea>
+
+            <div class="button-row">
+              <button type="button" class="btn-secondary" id="autoSuggestionBtn">Generate Content</button>
+              <button type="button" class="btn-secondary" id="autoOrderBtn">Summarize Orders</button>
+              <button type="button" class="btn-secondary" id="autoCampaignBtn">Auto Promote Product</button>
+            </div>
+            <textarea id="aiOutput" readonly placeholder="Generated AI content appears here..."></textarea>
+            <div id="automationStatus" class="status"></div>
+          </section>
+
+          <section class="card span-12" id="social">
+            <h3>Social Posting Tools</h3>
+            <p class="card-subtitle">Connect platforms, create posts, and schedule campaigns.</p>
+
+            <div class="social-connections" id="socialConnections">
+              <label class="social-item"><input type="checkbox" data-platform="Instagram" /> Instagram</label>
+              <label class="social-item"><input type="checkbox" data-platform="Facebook" /> Facebook</label>
+              <label class="social-item"><input type="checkbox" data-platform="TikTok" /> TikTok</label>
+              <label class="social-item"><input type="checkbox" data-platform="YouTube" /> YouTube</label>
+            </div>
+
+            <label for="socialPlatformSelect">Platform</label>
+            <select id="socialPlatformSelect">
+              <option value="Instagram">Instagram</option>
+              <option value="Facebook">Facebook</option>
+              <option value="TikTok">TikTok</option>
+              <option value="YouTube">YouTube</option>
+            </select>
+
+            <label for="socialPostInput">Post Draft</label>
+            <textarea id="socialPostInput" placeholder="Announce new products, offers, or updates..."></textarea>
+
+            <div class="button-row">
+              <label class="inline-check"><input type="radio" name="postMode" value="now" checked /> Post Now</label>
+              <label class="inline-check"><input type="radio" name="postMode" value="schedule" /> Schedule Post</label>
+            </div>
+
+            <div class="grid no-margin" id="scheduleFields">
+              <div class="span-6">
+                <label for="scheduleDate">Date</label>
+                <input id="scheduleDate" type="date" />
+              </div>
+              <div class="span-6">
+                <label for="scheduleTime">Time</label>
+                <input id="scheduleTime" type="time" />
+              </div>
+            </div>
+
+            <div class="button-row">
+              <button type="button" class="btn-primary" id="socialPublishBtn">Publish Draft</button>
+              <button type="button" class="btn-secondary" id="socialScheduleBtn">Schedule Post</button>
+            </div>
+
+            <h4>Scheduled / Posting History</h4>
+            <div id="socialPostsList" class="list"></div>
+            <div id="socialStatus" class="status"></div>
+          </section>
+
+          <section class="card span-12" id="analytics">
+            <h3>Analytics</h3>
+            <p class="card-subtitle">Sales, order volume, and growth trend insights.</p>
+            <div class="grid no-margin">
+              <div class="card span-4">
+                <h4>Sales</h4>
+                <canvas id="salesChart" height="180"></canvas>
+              </div>
+              <div class="card span-4">
+                <h4>Orders</h4>
+                <canvas id="ordersChart" height="180"></canvas>
+              </div>
+              <div class="card span-4">
+                <h4>Growth %</h4>
+                <canvas id="growthChart" height="180"></canvas>
+              </div>
+            </div>
+          </section>
+
+          <section class="card span-12">
+            <h3>Recent Activity</h3>
+            <div id="activityList" class="list"></div>
+          </section>
+
+          <section class="card span-12" id="settings">
+            <h3>Settings</h3>
+            <p class="card-subtitle">Currency, profile, password, and connected account controls.</p>
+
+            <form id="settingsForm">
+              <div class="grid no-margin">
+                <div class="span-6">
+                  <label for="preferredCurrency">Preferred Currency</label>
+                  <select id="preferredCurrency">
+                    <option value="NGN">NGN (₦)</option>
+                    <option value="USD">USD ($)</option>
+                    <option value="GBP">GBP (£)</option>
+                    <option value="EUR">EUR (€)</option>
+                  </select>
+                </div>
+                <div class="span-6">
+                  <label for="profileName">Profile Name</label>
+                  <input id="profileName" />
+                </div>
+                <div class="span-6">
+                  <label for="companyName">Company Name</label>
+                  <input id="companyName" />
+                </div>
+                <div class="span-6">
+                  <label for="profileBio">Bio</label>
+                  <input id="profileBio" />
+                </div>
+                <div class="span-6">
+                  <label for="currentPassword">Current Password</label>
+                  <input id="currentPassword" type="password" />
+                </div>
+                <div class="span-6">
+                  <label for="newPassword">New Password</label>
+                  <input id="newPassword" type="password" />
+                </div>
+              </div>
+              <div class="button-row">
+                <button type="submit" class="btn-primary">Save Settings</button>
+              </div>
+            </form>
+            <div id="settingsStatus" class="status"></div>
+
+            <div class="button-row">
+              <a href="index.html" class="btn-secondary">Go to Home</a>
+              <button id="logoutBtn" class="btn-danger" data-action="logout" type="button">Logout</button>
+            </div>
+          </section>
+        </div>
+
+        <div id="skeletonLayer" class="skeleton-layer hidden">
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js?v=20260304a"></script>
+</body>
+</html>

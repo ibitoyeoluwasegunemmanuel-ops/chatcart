@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <h2>ChatCart Admin</h2>
+      <ul>
+        <li>Overview</li>
+        <li>Vendors</li>
+        <li>Creators</li>
+        <li>Subscriptions</li>
+        <li>Payments</li>
+        <li>Analytics</li>
+        <li>Settings</li>
+      </ul>
+    </aside>
+
+    <main class="content">
+      <header class="topbar">
+        <h1>Admin Panel</h1>
+        <div class="topbar-actions">
+          <button class="notify-toggle" aria-label="Notifications">
+            Notifications
+            <span class="notify-count">0</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Total Users</h3>
+          <p>1,234</p>
+        </div>
+
+        <div class="card">
+          <h3>Revenue</h3>
+          <p>$12,430</p>
+        </div>
+
+        <div class="card">
+          <h3>Active Vendors</h3>
+          <p>230</p>
+        </div>
+      </div>
+
+      <section>
+        <h2>Recent Signups</h2>
+
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>Role</th>
+          </tr>
+
+          <tr>
+            <td>John</td>
+            <td>Vendor</td>
+          </tr>
+        </table>
+      </section>
+
+      <section class="chart-panel">
+        <h2>User Growth</h2>
+        <canvas class="chart-canvas" data-points="25,32,45,52,60,76,84,98"></canvas>
+      </section>
+    </main>
+  </div>
+  <div class="notification-panel">
+    <h3>Real-time Notifications</h3>
+    <ul class="notification-list"></ul>
+  </div>
+  <script src="../js/app.js"></script>
+</body>
+</html>

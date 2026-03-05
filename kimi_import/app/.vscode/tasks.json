@@ -1,0 +1,25 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run Vite Dev Server",
+			"type": "shell",
+			"command": "npm.cmd",
+			"args": [
+				"run",
+				"dev",
+				"--",
+				"--host",
+				"--port",
+				"5173"
+			],
+			"isBackground": true
+		},
+		{
+			"label": "dev",
+			"type": "shell",
+			"command": "npm.cmd run dev -- --host --port 5173",
+			"isBackground": true
+		}
+	]
+}

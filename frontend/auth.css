@@ -1,0 +1,90 @@
+:root {
+  --bg: #070b18;
+  --bg2: #0d1630;
+  --card: rgba(18, 27, 54, 0.88);
+  --text: #eaf0ff;
+  --muted: #9ba9cf;
+  --primary: #5f7cff;
+  --primary-2: #785fff;
+  --border: rgba(137, 164, 238, 0.28);
+  --danger: #ff6b86;
+  --success: #2fd19a;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, Segoe UI, Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 8% 12%, rgba(95,124,255,0.18), transparent 35%),
+    radial-gradient(circle at 92% 8%, rgba(120,95,255,0.15), transparent 30%),
+    linear-gradient(140deg, var(--bg), var(--bg2));
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.auth-card {
+  width: min(760px, 100%);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--card);
+  box-shadow: 0 18px 35px rgba(2, 8, 22, .45);
+  padding: 22px;
+}
+
+h1 { margin: 0 0 6px; }
+.subtitle { color: var(--muted); margin: 0 0 16px; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.grid.one { grid-template-columns: 1fr; }
+
+label { display:block; margin: 8px 0 6px; color: var(--muted); font-size: .9rem; }
+input, select {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 11px;
+  background: rgba(10, 18, 38, 0.85);
+  color: var(--text);
+  font: inherit;
+}
+
+.plan-box {
+  margin-top: 8px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 10px;
+  background: rgba(12, 20, 42, .68);
+}
+
+.actions { display:flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+button, .link-btn {
+  border: 0;
+  border-radius: 11px;
+  padding: 11px 14px;
+  font-weight: 700;
+  color: var(--text);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+button.primary { background: linear-gradient(135deg, var(--primary), var(--primary-2)); }
+.link-btn { background: rgba(22, 36, 72, .9); border: 1px solid var(--border); }
+button[disabled] { opacity: .6; cursor: not-allowed; }
+
+.status { margin-top: 12px; min-height: 21px; color: var(--muted); }
+.status.error { color: var(--danger); }
+.status.success { color: var(--success); }
+
+@media (max-width: 680px) {
+  .grid { grid-template-columns: 1fr; }
+}

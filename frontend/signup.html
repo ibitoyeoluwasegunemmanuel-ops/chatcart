@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChatCart Signup</title>
+  <link rel="stylesheet" href="auth.css?v=20260304b" />
+</head>
+<body>
+  <main class="auth-card">
+    <h1>Create Account</h1>
+    <p class="subtitle">Choose your account type and dedicated subscription plan.</p>
+
+    <form id="signupForm">
+      <div class="grid">
+        <div>
+          <label>Full Name</label>
+          <input id="name" required placeholder="Your full name" />
+        </div>
+        <div>
+          <label>Email</label>
+          <input id="email" type="email" required placeholder="you@example.com" />
+        </div>
+      </div>
+
+      <div class="grid">
+        <div>
+          <label>Password</label>
+          <input id="password" type="password" required minlength="6" placeholder="At least 6 characters" />
+        </div>
+        <div>
+          <label>Account Type</label>
+          <select id="role" required>
+            <option value="vendor">Vendor</option>
+            <option value="content_creator">Content Creator</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="plan-box">
+        <label>Subscription Plan</label>
+        <select id="subscriptionPlan" required></select>
+      </div>
+
+      <div class="actions">
+        <button id="submitBtn" type="submit" class="primary">Create Account</button>
+        <a class="link-btn" href="login.html">Already have account? Login</a>
+        <a class="link-btn" href="index.html">Back to Role Selection</a>
+      </div>
+      <div id="formStatus" class="status"></div>
+    </form>
+  </main>
+
+  <script src="auth.js?v=20260305d"></script>
+</body>
+</html>

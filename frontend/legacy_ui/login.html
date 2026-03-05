@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChatCart - Login</title>
+  <link rel="stylesheet" href="styles.css?v=20260304a" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-wrap">
+        <div class="brand">ChatCart</div>
+        <div class="brand-subtitle">Commerce + AI Automation</div>
+      </div>
+      <nav class="nav-list">
+        <a class="nav-link" data-icon="◈" href="dashboard.html">Dashboard</a>
+        <a class="nav-link" data-icon="◉" href="dashboard.html#products">Products</a>
+        <a class="nav-link" data-icon="◎" href="dashboard.html#orders">Orders</a>
+        <a class="nav-link" data-icon="✦" href="dashboard.html#automation">Automation</a>
+        <a class="nav-link" data-icon="◍" href="dashboard.html#social">Social Media</a>
+        <a class="nav-link" data-icon="◬" href="dashboard.html#analytics">Analytics</a>
+        <a class="nav-link" data-icon="⚙" href="dashboard.html#settings">Settings</a>
+        <button class="nav-link btn-danger" data-icon="⎋" data-action="logout" type="button">Logout</button>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1 class="topbar-title">Account Login</h1>
+          <p class="topbar-subtitle">Access your ChatCart workspace and continue managing your business.</p>
+        </div>
+        <div class="user-chip" id="navUser">Not signed in</div>
+      </header>
+
+      <section class="content">
+        <section class="hero">
+          <h2>Welcome back.</h2>
+          <p>Log in to view your dashboard, products, orders, and automation tools.</p>
+        </section>
+
+        <div class="grid">
+          <section class="card span-6">
+            <h3>Login</h3>
+            <p class="card-subtitle">Use your registered email and password.</p>
+            <form id="loginForm">
+              <label for="loginEmail">Email</label>
+              <input id="loginEmail" type="email" required />
+
+              <label for="loginPassword">Password</label>
+              <input id="loginPassword" type="password" required />
+
+              <div class="button-row">
+                <button type="submit" class="btn-primary">Login</button>
+                <a href="signup.html" class="btn-secondary">Create Account</a>
+              </div>
+            </form>
+            <div id="authStatus" class="status"></div>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js?v=20260304a"></script>
+</body>
+</html>

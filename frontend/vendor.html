@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChatCart Vendor Hub</title>
+  <link rel="stylesheet" href="vendor.css?v=20260304a" />
+</head>
+<body>
+  <div class="vendor-shell">
+    <aside class="vendor-sidebar">
+      <div class="logo-wrap">
+        <div class="logo">ChatCart</div>
+        <div class="logo-sub">Vendor Hub</div>
+      </div>
+      <nav class="vendor-nav">
+        <a href="#overview" class="nav-item active">Overview</a>
+        <a href="#products" class="nav-item">Products</a>
+        <a href="#orders" class="nav-item">Orders</a>
+        <a href="#settings" class="nav-item">Settings</a>
+      </nav>
+      <button id="logoutBtn" class="btn danger">Logout</button>
+    </aside>
+
+    <main class="vendor-main">
+      <header class="vendor-topbar">
+        <div>
+          <h1>Vendor Dashboard</h1>
+          <p>Manage catalog, track orders, and control your business operations.</p>
+          <div id="vendorPlanUsage" class="status"></div>
+        </div>
+        <div id="vendorSession" class="session-pill">Checking session...</div>
+      </header>
+
+      <section id="overview" class="vendor-grid stats-grid">
+        <article class="card stat"><p>Total Products</p><h2 id="statProducts">0</h2></article>
+        <article class="card stat"><p>Total Orders</p><h2 id="statOrders">0</h2></article>
+        <article class="card stat"><p>Revenue</p><h2 id="statRevenue">₦0</h2></article>
+        <article class="card stat"><p>Pending Orders</p><h2 id="statPending">0</h2></article>
+      </section>
+
+      <section class="vendor-grid main-grid">
+        <article id="products" class="card span-7">
+          <h3>Product Manager</h3>
+          <p class="muted">Create and manage your product catalog.</p>
+
+          <div class="form-grid two">
+            <div>
+              <label>Name</label>
+              <input id="productName" placeholder="Product name" />
+            </div>
+            <div>
+              <label>Price</label>
+              <input id="productPrice" type="number" min="0" step="0.01" placeholder="0.00" />
+            </div>
+          </div>
+
+          <div class="form-grid two">
+            <div>
+              <label>Currency</label>
+              <select id="productCurrency">
+                <option value="NGN">NGN</option>
+                <option value="USD">USD</option>
+                <option value="GBP">GBP</option>
+                <option value="EUR">EUR</option>
+              </select>
+            </div>
+            <div>
+              <label>Stock Quantity</label>
+              <input id="productStock" type="number" min="0" step="1" placeholder="0" />
+            </div>
+          </div>
+
+          <label>Description</label>
+          <textarea id="productDescription" placeholder="Describe your product..."></textarea>
+
+          <div class="btn-row">
+            <button id="createProductBtn" class="btn primary">Create Product</button>
+            <button id="refreshProductsBtn" class="btn secondary">Refresh Products</button>
+          </div>
+          <div id="productStatus" class="status"></div>
+        </article>
+
+        <article id="settings" class="card span-5">
+          <h3>Vendor Settings</h3>
+          <p class="muted">Control your storefront profile and preferred currency.</p>
+
+          <label>Profile Name</label>
+          <input id="profileName" placeholder="Profile name" />
+
+          <label>Company Name</label>
+          <input id="companyName" placeholder="Company name" />
+
+          <label>Bio</label>
+          <textarea id="bio" placeholder="Business description"></textarea>
+
+          <label>Preferred Currency</label>
+          <select id="preferredCurrency">
+            <option value="NGN">NGN</option>
+            <option value="USD">USD</option>
+            <option value="GBP">GBP</option>
+            <option value="EUR">EUR</option>
+          </select>
+
+          <label>Subscription Plan</label>
+          <select id="upgradePlanSelect">
+            <option value="vendor_starter">Vendor Starter</option>
+            <option value="vendor_growth">Vendor Growth</option>
+            <option value="vendor_scale">Vendor Scale</option>
+          </select>
+          <button id="upgradePlanBtn" class="btn secondary wide">Upgrade Plan</button>
+          <div id="upgradeStatus" class="status"></div>
+
+          <button id="saveSettingsBtn" class="btn primary wide">Save Settings</button>
+          <div id="settingsStatus" class="status"></div>
+        </article>
+        
+        <article class="card span-12">
+          <h3>Team Management (CEO / Staff)</h3>
+          <p class="muted">Create staff profiles, assign titles, and control access status.</p>
+          <div class="form-grid two">
+            <div>
+              <label>Staff Name</label>
+              <input id="staffName" placeholder="Staff full name" />
+            </div>
+            <div>
+              <label>Staff Email</label>
+              <input id="staffEmail" type="email" placeholder="staff@company.com" />
+            </div>
+          </div>
+          <div class="form-grid two">
+            <div>
+              <label>Staff Password</label>
+              <input id="staffPassword" type="password" placeholder="Temporary password" />
+            </div>
+            <div>
+              <label>Staff Title</label>
+              <input id="staffTitle" placeholder="e.g. Sales Manager" />
+            </div>
+          </div>
+          <label>Permissions</label>
+          <div id="staffPermissionOptions" class="inline-action"></div>
+          <div class="btn-row">
+            <button id="createStaffBtn" class="btn secondary">Create Staff Profile</button>
+            <button id="refreshStaffBtn" class="btn secondary">Refresh Team</button>
+          </div>
+          <div id="staffStatus" class="status"></div>
+          <div id="staffList" class="list"></div>
+        </article>
+
+        <article id="orders" class="card span-12">
+          <h3>Orders</h3>
+          <p class="muted">Track and update order statuses.</p>
+          <div class="btn-row">
+            <button id="refreshOrdersBtn" class="btn secondary">Refresh Orders</button>
+          </div>
+          <div id="ordersList" class="list"></div>
+          <div id="ordersStatus" class="status"></div>
+        </article>
+
+        <article class="card span-12">
+          <h3>My Products</h3>
+          <div id="productsList" class="list"></div>
+        </article>
+
+        <article class="card span-12">
+          <h3>Billing History</h3>
+          <div id="vendorBillingList" class="list"></div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="vendor.js?v=20260305d"></script>
+</body>
+</html>
