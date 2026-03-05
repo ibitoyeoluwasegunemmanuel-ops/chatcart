@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:4000/api";
+const API_BASE = window.CHATCART_API_BASE || "http://localhost:4000/api";
 const currentPage = window.location.pathname.split("/").pop() || "index.html";
 const CURRENCY_SYMBOL = { NGN: "₦", USD: "$", GBP: "£", EUR: "€" };
 

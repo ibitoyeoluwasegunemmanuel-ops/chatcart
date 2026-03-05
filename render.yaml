@@ -1,13 +1,28 @@
 services:
   - type: web
-    name: chatcart
-    env: node
-    rootDir: backend
-    buildCommand: npm install
-    startCommand: node server.js
+    name: chatcart-api
+    env: docker
+    branch: master
+    dockerfilePath: ./Dockerfile
     autoDeploy: true
     envVars:
       - key: NODE_ENV
         value: production
       - key: JWT_SECRET
         generateValue: true
+      - key: CORS_ORIGIN
+        value: https://chatcart-web.onrender.com
+
+  - type: static_site
+    name: chatcart-web
+    branch: master
+    buildCommand: |
+      mkdir -p dist
+      cp -R frontend/* dist/
+      cat > dist/config.js <<EOF
+      window.CHATCART_API_BASE = "${CHATCART_API_BASE}";
+      EOF
+    publishPath: dist
+    envVars:
+      - key: CHATCART_API_BASE
+        value: https://chatcart-api.onrender.com/api

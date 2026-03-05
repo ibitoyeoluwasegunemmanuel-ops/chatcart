@@ -19,7 +19,11 @@ const paymentRoutes = require("./routes/paymentRoutes");
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-app.use(cors());
+const corsOrigin = process.env.CORS_ORIGIN
+  ? process.env.CORS_ORIGIN.split(",").map((origin) => origin.trim())
+  : true;
+
+app.use(cors({ origin: corsOrigin }));
 app.use(express.json());
 
 app.get("/api/health", (_req, res) => {

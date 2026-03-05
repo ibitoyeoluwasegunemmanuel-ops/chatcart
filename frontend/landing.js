@@ -1,5 +1,9 @@
 const ROLE_KEY = "chatcart-selected-role";
 const API_BASE = (() => {
+  if (window.CHATCART_API_BASE) {
+    return window.CHATCART_API_BASE;
+  }
+
   if (window.location.protocol === "file:") {
     return "http://localhost:4000/api";
   }
