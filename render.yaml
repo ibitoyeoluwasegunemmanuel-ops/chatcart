@@ -10,8 +10,6 @@ services:
         value: production
       - key: JWT_SECRET
         generateValue: true
-      - key: CORS_ORIGIN
-        value: https://chatcart-web.onrender.com
 
   - type: static
     name: chatcart-web
