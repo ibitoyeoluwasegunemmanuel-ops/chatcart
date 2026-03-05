@@ -22,6 +22,7 @@ body {
     radial-gradient(circle at 95% 5%, rgba(47,209,154,0.12), transparent 30%),
     linear-gradient(140deg, var(--bg), var(--bg2));
   min-height: 100vh;
+  animation: fadeInUp .45s ease;
 }
 
 .creator-shell {
@@ -111,6 +112,12 @@ input, select, textarea {
   color: var(--text);
   padding: 10px 11px;
   font: inherit;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: rgba(120, 95, 255, .7);
+  box-shadow: 0 0 0 3px rgba(120, 95, 255, .16);
 }
 textarea { min-height: 90px; resize: vertical; }
 .output { min-height: 150px; }
@@ -131,6 +138,7 @@ textarea { min-height: 90px; resize: vertical; }
 .btn.secondary { background: rgba(22, 36, 72, .9); border: 1px solid var(--border); }
 .btn.danger { background: rgba(132, 39, 68, .45); border: 1px solid rgba(255,107,134,.4); width:100%; margin-top: 14px; }
 .btn.wide { width: 100%; margin-top: 12px; }
+.btn:hover { transform: translateY(-1px); filter: brightness(1.03); }
 .btn[disabled] { opacity: .6; cursor:not-allowed; }
 
 .status { margin-top: 10px; min-height: 20px; color: var(--muted); }
@@ -162,6 +170,11 @@ textarea { min-height: 90px; resize: vertical; }
 .post-item .meta { color: var(--muted); font-size: .82rem; margin-top: 6px; }
 
 .inline-action { margin-top: 8px; display:flex; gap:8px; align-items:center; flex-wrap: wrap; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 @media (max-width: 1080px) {
   .creator-shell { grid-template-columns: 1fr; }

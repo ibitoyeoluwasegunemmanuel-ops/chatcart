@@ -22,6 +22,7 @@ body {
     radial-gradient(circle at 95% 5%, rgba(47,209,154,0.12), transparent 30%),
     linear-gradient(140deg, var(--bg), var(--bg2));
   min-height: 100vh;
+  animation: fadeInUp .45s ease;
 }
 
 .vendor-shell { display:grid; grid-template-columns: 250px 1fr; min-height: 100vh; }
@@ -47,6 +48,8 @@ body {
 .span-12 { grid-column: span 12; }
 
 .card { border:1px solid var(--border); border-radius:16px; background: linear-gradient(160deg, var(--card), var(--card2)); padding:16px; box-shadow:0 14px 30px rgba(2,8,22,.42); }
+.card { transition: transform .2s ease, box-shadow .2s ease; }
+.card:hover { transform: translateY(-2px); box-shadow:0 22px 40px rgba(2,8,22,.52); }
 .card h3 { margin:0 0 4px; }
 .muted { color:var(--muted); margin-top:0; margin-bottom:12px; font-size:.9rem; }
 .stat p { margin:0; color:var(--muted); font-size:.82rem; }
@@ -56,6 +59,12 @@ label { display:block; margin:10px 0 6px; font-size:.85rem; color:var(--muted); 
 input, select, textarea {
   width:100%; border-radius:12px; border:1px solid var(--border);
   background: rgba(12,20,42,.85); color:var(--text); padding:10px 11px; font:inherit;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: rgba(120, 95, 255, .7);
+  box-shadow: 0 0 0 3px rgba(120, 95, 255, .16);
 }
 textarea { min-height:92px; resize: vertical; }
 .form-grid { display:grid; gap:10px; }
@@ -67,7 +76,13 @@ textarea { min-height:92px; resize: vertical; }
 .btn.secondary { background: rgba(22, 36, 72, .9); border:1px solid var(--border); }
 .btn.danger { background: rgba(132, 39, 68, .45); border:1px solid rgba(255,107,134,.4); width:100%; margin-top:14px; }
 .btn.wide { width:100%; margin-top:12px; }
+.btn:hover { transform: translateY(-1px); filter: brightness(1.03); }
 .btn[disabled] { opacity:.6; cursor:not-allowed; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 .status { margin-top:10px; min-height:20px; color:var(--muted); }
 .status.success { color:var(--success); }
