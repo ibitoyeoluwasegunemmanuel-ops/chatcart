@@ -1,0 +1,29 @@
+{
+  "name": "chatcart-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext .js,.jsx"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.0",
+    "axios": "^1.6.7",
+    "react-hot-toast": "^2.4.1",
+    "lucide-react": "^0.383.0",
+    "recharts": "^2.12.0",
+    "@tanstack/react-query": "^5.24.0",
+    "zustand": "^4.5.2",
+    "flutterwave-react-v3": "^1.0.8"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.1.4",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.0"
+  }
+}
