@@ -107,8 +107,7 @@ export default function VendorWhatsApp() {
             </div>
             <div style={{marginBottom:14}}>
               <div style={{fontSize:11,fontWeight:600,color:'rgba(255,255,255,.45)',letterSpacing:'.05em',textTransform:'uppercase',marginBottom:5}}>Message</div>
-              <textarea value={msg} onChange={e=>setMsg(e.target.value)} rows={6} placeholder={"New arrivals just dropped!
-chatcart.com/store/my-store"} style={{...inp,resize:'vertical'}}/>
+              <textarea value={msg} onChange={e=>setMsg(e.target.value)} rows={6} placeholder={"New arrivals just dropped! chatcart.com/store/my-store"} style={{...inp,resize:'vertical'}}/>
             </div>
             <button onClick={()=>sendBroadcast.mutate()} disabled={!msg.trim()||sendBroadcast.isLoading} style={{width:'100%',padding:'10px',background:'#3b82f6',color:'#fff',border:'none',borderRadius:8,fontSize:13,fontWeight:700,cursor:'pointer',opacity:!msg.trim()?.6:1}}>
               {sendBroadcast.isLoading?'Sending...':'Send Broadcast'}
@@ -133,23 +132,7 @@ chatcart.com/store/my-store"} style={{...inp,resize:'vertical'}}/>
         </div>
       )}
 
-      {tab==='quickreply' && (
-        <div className="dash-card" style={{padding:20}}>
-          <div style={{fontWeight:700,fontSize:14,color:'#eef2ff',marginBottom:16}}>Quick Reply Templates</div>
-          {[
-            ['Welcome Message','Hello! Welcome to our store. How can I help you today?
-
-1 Browse Products
-2 Track Order
-3 Payment Methods
-4 Talk to Agent'],
-            ['Payment Details','Payment Methods:
-
-1 Bank Transfer
-   Access Bank 0123456789
-
-2 Pay on Delivery (Lagos)
-3 Online via our website'],
+      {tab==='quickreply' && ( <div className="dash-card" style={{padding:20}}> <div style={{fontWeight:700,fontSize:14,color:'#eef2ff',marginBottom:16}}>Quick Reply Templates</div> {[ ['Welcome Message','Hello! Welcome to our store. How can I help you today? 1 Browse Products 2 Track Order 3 Payment Methods 4 Talk to Agent'], ['Payment Details','Payment Methods: 1 Bank Transfer Access Bank 0123456789 2 Pay on Delivery (Lagos) 3 Online via our website'],
             ['Out of Office','Thanks for messaging! We are currently offline. Business hours: Mon-Sat 8am-8pm. We will reply shortly!'],
           ].map(([label,val]) => (
             <div key={label} style={{marginBottom:18}}>
